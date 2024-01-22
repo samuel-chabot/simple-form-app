@@ -31,11 +31,10 @@ public class RequestFormService : IRequestFormService
         {
             ApplicationArea = createRequestForm.ApplicationArea,
             Tag = new Tag() { Tags = createRequestForm.Tags },
-            //Tags = createRequestForm.Tags,
             Title = createRequestForm.Title,
             Description = createRequestForm.Description,
             ContactEmail = createRequestForm.ContactEmail,
-            DateCreated = createRequestForm.DateCreated,
+            DateCreated = DateTime.UtcNow,
             Resolved = createRequestForm.Resolved,
             VideoUrl = createRequestForm.VideoUrl,
             DateTime = createRequestForm.DateTime,
@@ -47,20 +46,19 @@ public class RequestFormService : IRequestFormService
         return record.Into();
     }
 
-    public async Task<RequestForm> Update(UpdateRequestForm updateRequest, CancellationToken cancellationToken)
+    public async Task<RequestForm> Update(Guid id, UpdateRequestForm updateRequest, CancellationToken cancellationToken)
     {
-        var record = await _db.RequestForms.FirstAsync(x => x.Id == updateRequest.Id, cancellationToken);
-        //can fail
+        var record = await _db.RequestForms.FirstAsync(x => x.Id == id, cancellationToken);
 
         record.ApplicationArea = updateRequest.ApplicationArea;
         record.Tag = new Tag() { Tags = updateRequest.Tags };
         record.Title = updateRequest.Title;
         record.Description = updateRequest.Description;
         record.ContactEmail = updateRequest.ContactEmail;
-        record.DateCreated = updateRequest.DateCreated;
         record.Resolved = updateRequest.Resolved;
         record.VideoUrl = updateRequest.VideoUrl;
         record.DateTime = updateRequest.DateTime;
+        record.DateCreated = DateTime.UtcNow;
 
         await _db.SaveChangesAsync(cancellationToken);
 

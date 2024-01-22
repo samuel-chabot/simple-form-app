@@ -42,8 +42,7 @@ public class RequestFormController : ControllerBase
     [HttpPut("{id:guid}")]
     public async Task<ActionResult<RequestForm>> Put(Guid id, [FromBody] UpdateRequestForm value, CancellationToken cancellationToken)
     {
-        value.Id = id;
-        return await _requestFormService.Update(value, cancellationToken);
+        return await _requestFormService.Update(id, value, cancellationToken);
     }
 
     // DELETE <RequestFormController>/<id>
