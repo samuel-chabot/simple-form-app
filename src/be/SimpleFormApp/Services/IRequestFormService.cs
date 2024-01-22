@@ -7,5 +7,5 @@ public interface IRequestFormService
     Task<bool> Delete(Guid id, CancellationToken cancellationToken);
     Task<RequestForm?> Get(Guid id, CancellationToken cancellationToken);
     Task<IEnumerable<RequestForm>> GetAll(CancellationToken cancellationToken);
-    Task<RequestForm> Update(UpdateRequestForm updateRequest, CancellationToken cancellationToken);
+    Task<RequestForm> Update(Guid id, UpdateRequestForm updateRequest, CancellationToken cancellationToken);
 }
