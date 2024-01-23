@@ -1,3 +1,5 @@
 # simple-form-app
 
-how to run `docker compose up -d --build`
+run `docker compose up -d --build`
+go to `http://localhost:4200`
+test away.
