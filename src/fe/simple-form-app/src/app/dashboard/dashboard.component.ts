@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { ApiService } from '../api-servce/api-service';
+import { ApiService } from '../api-service/api-service';
 import { Observable, take } from 'rxjs';
 import { MatListModule } from '@angular/material/list';
 import { CommonModule } from '@angular/common';

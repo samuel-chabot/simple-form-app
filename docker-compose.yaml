@@ -1,4 +1,13 @@
 services:
+  simple-form-app-fe:
+    build:
+      context: ./src/fe/simple-form-app
+      dockerfile: ./Dockerfile
+    ports:
+      - 4200:80
+    networks:
+      - simple-form-net
+
   simple-form-app-api:
     build:
       context: ./src/be/SimpleFormApp

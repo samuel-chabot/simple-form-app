@@ -1,10 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ItemFormComponent } from '../item-form/item-form.component';
-import { ApiService } from '../api-servce/api-service';
+import { ApiService } from '../api-service/api-service';
 import { Observable, map, skip, take, takeWhile, tap } from 'rxjs';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Item } from '../interfaces';
-import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 
 @Component({
