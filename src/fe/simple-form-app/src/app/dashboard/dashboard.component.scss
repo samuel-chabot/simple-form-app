@@ -1,0 +1,23 @@
+a {
+  font-size: 1.6rem;
+}
+
+mat-list {
+  margin-top: 2.4rem;
+
+  mat-list-item {
+    background-color: rgb(243, 243, 243);
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+
+    .list-item-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      span {
+        flex: 1 1 auto;
+      }
+    }
+  }
+}

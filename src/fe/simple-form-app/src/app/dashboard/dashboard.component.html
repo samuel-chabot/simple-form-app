@@ -1,0 +1,17 @@
+<a [routerLink]="['create']">Create Ticket</a>
+
+<mat-list role="list">
+  @for (item of items | async; track item) {
+    <mat-list-item role="listitem">
+      <span matListItemTitle class="list-item-row">
+        <span>{{ item.title }}</span>
+        <span>{{ item.applicationArea }}</span>
+        <span>{{ item.dateCreated }}</span>
+        <a class="mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base" [routerLink]="['edit', item.id]">
+          Edit
+        </a>
+        <button mat-raised-button color="warn" (click)="handleDelete(item.id!)">Delete</button>
+      </span>
+    </mat-list-item>
+  }
+</mat-list>

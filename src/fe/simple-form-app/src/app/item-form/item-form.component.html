@@ -1,0 +1,52 @@
+<form [formGroup]="form" (ngSubmit)="handleSave()">
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title" />
+    <mat-error>You need to enter a title.</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Application Area</mat-label>
+    <mat-select formControlName="applicationArea">
+      @for (aAOptions of applicationAreaOptions; track aAOptions) {
+        <mat-option [value]="aAOptions.value">{{ aAOptions.text }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>description</mat-label>
+    <textarea matInput formControlName="description" tabindex="-1"></textarea>
+    <mat-error>You need to select an application area.</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Date</mat-label>
+    <input matInput #dateInput [matDatepicker]="picker" formControlName="dateTime" />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error>You need to select a date.</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Video URL</mat-label>
+    <input matInput formControlName="videoUrl" />
+    <mat-hint>Only video page links from youtube or vimeo.</mat-hint>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Contact Email</mat-label>
+    <input matInput formControlName="contactEmail" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Tags</mat-label>
+    <mat-select formControlName="tags" multiple>
+      <mat-option value="bug">Bug</mat-option>
+      <mat-option value="featureRequest">Feature Request</mat-option>
+      <mat-option value="it">IT</mat-option>
+      <mat-option value="helpRequested">Help Requested</mat-option>
+      <mat-option value="accessibility">Accessibility</mat-option>
+      <mat-option value="urgent">Urgent</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-checkbox color="primary" formControlName="resolved">
+    <span class="checkbox-label">Resolved</span>
+  </mat-checkbox>
+  <button mat-raised-button color="primary">Submit</button>
+</form>
