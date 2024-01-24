@@ -15,6 +15,9 @@ public class RequestFormService : IRequestFormService
 
     public async Task<IEnumerable<RequestForm>> GetAll(CancellationToken cancellationToken)
     {
+        var aab = await _db.RequestForms.Where(x => x.Tag.Tags.Contains("featureRequest")).ToListAsync();
+        var aac = await _db.RequestForms.Where(x => x.Tag.Tags.Contains("bug")).ToListAsync();
+
         var records = await _db.RequestForms.ToListAsync(cancellationToken);
         return records.Select(x => x.Into());
     }

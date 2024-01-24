@@ -17,6 +17,8 @@ services:
       CONNECTIONSTRINGS__DEFAULT: "Server=db;Database=simple-form-db;Port=5432;User Id=postgres;Password=doNotUseThisPasswordInARealApplication;SSL Mode=Disable;Include Error Detail=true"
     ports:
       - 8080:8080
+    depends_on:
+      - db
     networks:
       - simple-form-net
 
