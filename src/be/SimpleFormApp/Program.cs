@@ -27,10 +27,27 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+
 using (var servicescope = app.Services.CreateScope())
 {
-    var db = servicescope.ServiceProvider.GetRequiredService<ApplicationContext>();
-    db.Database.Migrate();
+    var logger = servicescope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+
+    while (true)
+    {
+        try
+        {
+            var db = servicescope.ServiceProvider.GetRequiredService<ApplicationContext>();
+            db.Database.Migrate();
+            logger.LogInformation("Migrations applied successfully");
+            break;
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Failed to migrate");
+        }
+
+        await Task.Delay(2000);
+    }
 }
 
 app.Run();
