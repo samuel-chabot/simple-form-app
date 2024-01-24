@@ -5,6 +5,8 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - 4200:80
+    depends_on:
+      - simple-form-app-api
     networks:
       - simple-form-net
 
